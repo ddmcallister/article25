@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Email Share Form
-Plugin URI: http://zerotbdeaths.org/
+Plugin URI: https://github.com/ddmcallister/article25
 Description: Allows users to edit and send email from form
 Version: 1.0
 Author: Destanie McAllister
-Author URI: ddmcallister.com
+Author URI: https://github.com/ddmcallister/article25
 */
 
 function html_form_code() {
