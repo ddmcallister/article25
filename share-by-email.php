@@ -9,19 +9,27 @@ Author URI: https://github.com/ddmcallister/article25
 */
 
 function html_form_code() {
-	    echo '<form id="0tb-email" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
+        echo '<form id="0tb-email" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
         echo '<fieldset>';
         echo '<h3 class="email-h3">';
         echo 'Enter Your Information:</h3>';
         echo '<div class="col">';
         echo '<input class="email-inputs" type="email" name="from-email" placeholder="Email Address" value="' . ( isset( $_POST["from-email"] ) ? esc_attr( $_POST["from-email"] ) : '' ) . '" size="40" />';
-        echo '<input class="email-inputs" type="text" name="from-name" placeholder="Email signature… (E.g. “Sincerely, John”)" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
+        echo '<input class="email-inputs" type="text" name="from-name" placeholder="Your Name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
         echo '</fieldset>';
         echo '<fieldset>';
         echo '<h3 class="email-h3">';
         echo 'Choose Your Recipients and Write Your Email:</h3>';
         echo '<input class="email-inputs" type="text" name="recips" pattern="^([^@]+@[^.]+(\.[^.]+))+(\s?[,]\s?|$)+$" placeholder="Enter email addresses here separated by commas" value="' . ( isset( $_POST["recips"] ) ? esc_attr( $_POST["recips"] ) : '' ) . '" size="40" />';
-        echo '<textarea class="email-txt" rows="10" cols="35" name="mssg">' . ( isset( $_POST["mssg"] ) ? esc_attr( $_POST["mssg"] ) : '' ) . '</textarea>';
+        echo '<textarea class="email-txt" rows="10" cols="35" name="mssg">Dear Friends,
+
+More than 3 lakh (300,000) people die every year in India from tuberculosis because of improper diagnosis, prevention and treatment. There are more than 2 million TB cases in India every year—largely concentrated in India’s most populous cities.
+
+However, it is possible to end deaths from TB. Comprehensive TB programs have been implemented all over the world—from major metropolitan cities like Lima in Peru to the most difficult-to-reach rural villages of Siberia in Russia. These programs have succeeded in significantly reducing deaths from TB.
+
+While TB programs in India have taken some steps to curbing the epidemic they still have many gaps. Please help India take steps to change this by signing this petition calling on Indian leaders to implement comprehensive programs to end TB deaths: bit.ly/ztbpetition
+
+Email signature… (E.g. “Sincerely, John”)' . ( isset( $_POST["mssg"] ) ? esc_attr( $_POST["mssg"] ) : '' ) . '</textarea>';
         echo '</fieldset>';
         echo '<div><input id="email-btn" type="submit" name="form-submitted" value="Send an Email"></div>';
         echo '</form>';
@@ -37,10 +45,11 @@ function deliver_mail() {
         $headers = 'From: ' . sanitize_text_field( $_POST["from-name"] ) . ' <' . sanitize_email( $_POST["from-email"] ) . '>' . "\r\n";
 
 
-        // If email has been process for sending, display a success message
+        // If email has been process for sending, redirect
         if ( wp_mail( $to, $subject, $message, $headers) ) {
-            echo '<div>';
-            echo '<p>Thanks for contacting me, expect a response soon.</p>';
+            $_POST = array();
+        echo '<div>';
+            echo '<p>Thank you.</p>';
             echo '</div>';
         } else {
             echo 'An unexpected error occurred';
