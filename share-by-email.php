@@ -12,7 +12,7 @@ function html_form_code() {
 	    echo '<form id="0tb-email" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
         echo '<fieldset>';
         echo '<h3 class="email-h3">';
-        echo 'Enter Your Information</h3>';
+        echo 'Enter Your Information:</h3>';
         echo '<div class="col">';
         echo '<input class="email-inputs" type="email" name="from-email" placeholder="Email Address" value="' . ( isset( $_POST["from-email"] ) ? esc_attr( $_POST["from-email"] ) : '' ) . '" size="40" />';
         echo '<input class="email-inputs" type="text" name="from-name" placeholder="Email signature… (E.g. “Sincerely, John”)" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
@@ -23,7 +23,7 @@ function html_form_code() {
         echo '<input class="email-inputs" type="text" name="recips" pattern="^([^@]+@[^.]+(\.[^.]+))+(\s?[,]\s?|$)+$" placeholder="Enter email addresses here separated by commas" value="' . ( isset( $_POST["recips"] ) ? esc_attr( $_POST["recips"] ) : '' ) . '" size="40" />';
         echo '<textarea class="email-txt" rows="10" cols="35" name="mssg">' . ( isset( $_POST["mssg"] ) ? esc_attr( $_POST["mssg"] ) : '' ) . '</textarea>';
         echo '</fieldset>';
-        echo '<div><input class="email-btn" type="submit" name="form-submitted" value="Send"></div>';
+        echo '<div><input id="email-btn" type="submit" name="form-submitted" value="Send an Email"></div>';
         echo '</form>';
 }
 
