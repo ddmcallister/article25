@@ -15,7 +15,7 @@ function html_form_code() {
         echo 'Enter Your Information:</h3>';
         echo '<div class="col">';
         echo '<input class="email-inputs" type="email" name="from-email" placeholder="Email Address" value="' . ( isset( $_POST["from-email"] ) ? esc_attr( $_POST["from-email"] ) : '' ) . '" size="40" />';
-        echo '<input class="email-inputs" type="text" name="from-name" placeholder="Your Name" pattern="[a-zA-Z0-9]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
+        echo '<input class="email-inputs" type="text" name="from-name" placeholder="Your Name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
         echo '</fieldset>';
         echo '<fieldset>';
         echo '<h3 class="email-h3">';
