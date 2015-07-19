@@ -11,16 +11,16 @@ Author URI: https://github.com/ddmcallister/article25
 function html_form_code() {
         echo '<form id="0tb-email" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
         echo '<fieldset>';
-        echo '<h3 class="email-h3">';
+        echo '<h3 class="ztbcampaigns-h3">';
         echo 'Enter Your Information:</h3>';
         echo '<div class="col">';
-        echo '<input class="email-inputs" type="email" name="from-email" placeholder="Email Address" value="' . ( isset( $_POST["from-email"] ) ? esc_attr( $_POST["from-email"] ) : '' ) . '" size="40" />';
-        echo '<input class="email-inputs" type="text" name="from-name" placeholder="Your Name" pattern="[a-zA-Z0-9]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
+        echo '<input class="ztbcampaigns-inputs" type="email" name="from-email" placeholder="Email Address" value="' . ( isset( $_POST["from-email"] ) ? esc_attr( $_POST["from-email"] ) : '' ) . '" size="40" />';
+        echo '<input class="ztbcampaigns-inputs" type="text" name="from-name" placeholder="Your Name" pattern="[a-zA-Z0-9]+" value="' . ( isset( $_POST["from-name"] ) ? esc_attr( $_POST["from-name"] ) : '' ) . '" size="40" />';
         echo '</fieldset>';
         echo '<fieldset>';
-        echo '<h3 class="email-h3">';
+        echo '<h3 class="ztbcampaigns-h3">';
         echo 'Choose Your Recipients and Write Your Email:</h3>';
-        echo '<input class="email-inputs" type="text" name="recips" pattern="^([^@]+@[^.]+(\.[^.]+))+(\s?[,]\s?|$)+$" placeholder="Enter email addresses here separated by commas" value="' . ( isset( $_POST["recips"] ) ? esc_attr( $_POST["recips"] ) : '' ) . '" size="40" />';
+        echo '<input class="ztbcampaigns-inputs" type="text" name="recips" pattern="^([^@]+@[^.]+(\.[^.]+))+(\s?[,]\s?|$)+$" placeholder="Enter email addresses here separated by commas" value="' . ( isset( $_POST["recips"] ) ? esc_attr( $_POST["recips"] ) : '' ) . '" size="40" />';
         echo '<textarea class="email-txt" rows="10" cols="35" name="mssg">Dear Friends,
 
 More than 3 lakh (300,000) people die every year in India from tuberculosis because of improper diagnosis, prevention and treatment. There are more than 2 million TB cases in India every year—largely concentrated in India’s most populous cities.
@@ -31,7 +31,7 @@ While TB programs in India have taken some steps to curbing the epidemic they st
 
 Email signature… (E.g. “Sincerely, John”)' . ( isset( $_POST["mssg"] ) ? esc_attr( $_POST["mssg"] ) : '' ) . '</textarea>';
         echo '</fieldset>';
-        echo '<div><input id="email-btn" type="submit" name="form-submitted" value="Send an Email"></div>';
+        echo '<div><input class="ztbcampaigns-btn" id="email-btn" type="submit" name="form-submitted" value="Send an Email"></div>';
         echo '</form>';
 }
 
@@ -41,7 +41,7 @@ function deliver_mail() {
     if ( isset( $_POST['form-submitted'] ) ) {
         $message = esc_textarea( $_POST["mssg"] );
         $to = sanitize_text_field( $_POST["recips"] );
-        $subject = "test email";
+        $subject = "end TB deaths in India";
         $headers = 'From: ' . sanitize_text_field( $_POST["from-name"] ) . ' <' . sanitize_email( $_POST["from-email"] ) . '>' . "\r\n";
 
 
