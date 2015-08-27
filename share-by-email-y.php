@@ -8,6 +8,8 @@ Author: Destanie McAllister
 Author URI: https://github.com/ddmcallister/article25
 */
 
+/*page won't load with this one*/
+
 function html_form_code() {
         echo '<form id="0tb-email" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
         echo '<fieldset>';
@@ -56,7 +58,7 @@ function deliver_mail() {
             echo '<p class="post-submit">An error occurred. Make sure you have used commas to separate multiple email addresses.</p>';
         }*/
     }
-    header("Location: http://zerotbdeaths.org/pledge-email-p…tion-thank-you/");
+    header("Location: http://zerotbdeaths.org/pledge-email-petition-thank-you/");
     exit();
 }
  

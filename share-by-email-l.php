@@ -1,4 +1,5 @@
 <?php
+/*fail sent email didn't load either header reloaded page*/
 /*
 Plugin Name: Email Share Form
 Plugin URI: https://github.com/ddmcallister/article25
@@ -41,23 +42,18 @@ function deliver_mail() {
     if ( isset( $_POST['form-submitted'] ) ) {
         $message = esc_textarea( $_POST["mssg"] );
         $to = sanitize_text_field( $_POST["recips"] );
-        $subject = "end TB deaths in India";
+        $subject = 'end TB deaths in India';
         $headers = 'From: ' . sanitize_text_field( $_POST["from-name"] ) . ' <' . sanitize_email( $_POST["from-email"] ) . '>' . "\r\n";
-
+        $headers = 'Location: http://zerotbdeaths.org/pledge-email-petition-thank-you/' . "\r\n";
 
         // If email has been process for sending, redirect
-/*        if ( wp_mail( $to, $subject, $message, $headers) ) {
-            $_POST = array();
-        echo '<div>';
-            echo '<p class="post-submit">Success!</p>';
-            echo '</div>';
+        /*if ( wp_mail( $to, $subject, $message, $headers) ) {
+            
         } else {
-            $_POST = array();
             echo '<p class="post-submit">An error occurred. Make sure you have used commas to separate multiple email addresses.</p>';
         }*/
     }
-    header("Location: http://zerotbdeaths.org/pledge-email-p…tion-thank-you/");
-    exit();
+    wp_mail( $to, $subject, $message, $headers);
 }
  
 function dm_shortcode() {

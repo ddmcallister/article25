@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: Email Share Form
 Plugin URI: https://github.com/ddmcallister/article25
@@ -7,6 +8,8 @@ Version: 1.0
 Author: Destanie McAllister
 Author URI: https://github.com/ddmcallister/article25
 */
+
+/*sends, reloads, does not redirect*/
 
 function html_form_code() {
         echo '<form id="0tb-email" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
@@ -46,25 +49,19 @@ function deliver_mail() {
 
 
         // If email has been process for sending, redirect
-/*        if ( wp_mail( $to, $subject, $message, $headers) ) {
-            $_POST = array();
-        echo '<div>';
-            echo '<p class="post-submit">Success!</p>';
-            echo '</div>';
+        if ( wp_mail( $to, $subject, $message, $headers) ) {
+            header("http://zerotbdeaths.org/pledge-email-petition-thank-you/");
         } else {
             $_POST = array();
             echo '<p class="post-submit">An error occurred. Make sure you have used commas to separate multiple email addresses.</p>';
-        }*/
+        }
     }
-    header("Location: http://zerotbdeaths.org/pledge-email-p…tion-thank-you/");
-    exit();
 }
  
 function dm_shortcode() {
     ob_start();
     deliver_mail();
     html_form_code();
- 
     return ob_get_clean();
 }
  
