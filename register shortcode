@@ -1,0 +1,9 @@
+
+
+
+
+function register_shortcodes(){
+   add_shortcode('destaniemc_contact_form', 'destaniemc_shortcode');
+}
+
+add_action( 'init', 'register_shortcodes');
